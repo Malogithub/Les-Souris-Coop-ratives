@@ -1,0 +1,35 @@
+mport java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JLabel;
+import javax.swing.WindowConstants;
+
+public class Test extends Frame {
+
+	// propriété de la fenêtre
+	  Test(String title, int x, int y, int ligne, int colonne) {
+	    setTitle("Les souris coopératives");
+	    
+	    
+	    // Crée un canvas et l'ajouter au jframe
+	    Grille gri = new Grille(x, y, ligne, colonne);
+	    add(gri);
+
+	    addWindowListener(new WindowAdapter() {
+	      public void windowClosing(WindowEvent e) {
+	        setVisible(false);
+	        dispose();
+	        System.exit(0);
+	      }
+	    });
+
+	    // Fin normal
+	    pack();
+	  }
+	  
+
+	  public static void main(String[] a) {
+	    new Test("Test", 500, 500, 10, 10).setVisible(true);
+	  }
+	}
